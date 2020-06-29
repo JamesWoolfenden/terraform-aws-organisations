@@ -44,10 +44,13 @@ repos:
         entry: yamllint
         language: python
         types: [file, yaml]
-  - repo: git://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.21.0
+  - repo: git://github.com/jameswoolfenden/pre-commit
+    rev: v0.1.33
     hooks:
-      - id: terraform_docs
+      - id: terraform-fmt
+      - id: tf2docs
+      - id: checkov-scan
+        language_version: python3.7
   - repo: git://github.com/prettier/prettier
     rev: 1.19.1
     hooks:
