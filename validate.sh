@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-cd example/exampleA || return
+rm .terraform.lock.hcl
 rm .terraform -fr
-terraform init
+terraform init -upgrade
 terraform validate
+make valid
