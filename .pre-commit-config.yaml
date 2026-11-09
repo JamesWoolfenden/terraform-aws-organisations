@@ -37,12 +37,6 @@ repos:
     hooks:
       - id: terraform-fmt
       - id: tf2docs
-  - repo: https://github.com/bridgecrewio/checkov
-    rev: e77b5f7422ad23034c1a3c0a1902cd7e9eb60caf # 3.2.527
-    hooks:
-      - id: checkov
-        verbose: true
-        entry: checkov -d example/examplea --external-checks-dir checkov --download-external-modules true --compact
   - repo: https://github.com/jameswoolfenden/pike
     rev: 26feee4bf690195c46456bce70ad8b292fac8a35 # v0.4.4
     hooks:
@@ -57,3 +51,11 @@ repos:
     hooks:
       - id: ghat-go
       - id: ghat-go-sift
+  - repo: local
+    hooks:
+      - id: holden
+        name: holden
+        entry: holden scan
+        language: system
+        pass_filenames: false
+        always_run: true

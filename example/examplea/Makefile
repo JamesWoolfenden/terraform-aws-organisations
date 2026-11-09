@@ -23,7 +23,7 @@ plan:
 planned: init
 	terraform plan -out tf.plan
 	terraform show -json tf.plan  > tf.json
-	checkov -f tf.json
+	holden scan .
 
 p:
 	terraform plan -refresh=true
@@ -47,14 +47,14 @@ docs:
 
 valid:
 	-terraform fmt -recursive
-	-checkov -d . --external-checks-dir ../../checkov
+	-holden scan .
 	-tfsec . --tfvars-file examples.auto.tfvars
 	-terrascan scan
 	docker pull checkmarx/kics:latest
 	docker run -v $(CURDIR):/path checkmarx/kics:latest scan --path /path
 
 compare:
-	-checkov -d . --external-checks-dir ../../checkov -o json >../../output/checkov.json
+	-holden scan . --format json >../../output/holden.json
 	-terrascan scan -o json -x json >../../output/terrascan.json
 	-tfsec . --out ../../output/tfsec.json -f json -s
 	docker pull checkmarx/kics:latest

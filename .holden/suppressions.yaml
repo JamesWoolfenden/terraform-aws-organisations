@@ -1,0 +1,7 @@
+suppressions:
+  - policy_id: HLD_CI_017
+    resource_id: gha_job.pull_request.yml.pr
+    reason: Reusable workflow from the owner's own shared repo (JamesWoolfenden/.github), intentionally tracks main
+  - policy_id: HLD_CI_017
+    resource_id: gha_job.verify.yml.verify
+    reason: Reusable workflow from the owner's own shared repo (JamesWoolfenden/.github), intentionally tracks main
